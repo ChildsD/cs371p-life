@@ -15,11 +15,19 @@ public:
         status = '.';
     }
     
-    void die() {
+    ConwayCell(char stat) {
+        status = stat;
+    }
+    
+    void update(size_t alive_neighbor) {
+        
+    }
+    
+    inline void die() {
         status = '.';
     }
     
-    void resurrect() {
+    inline void resurrect() {
         status = '*';
     }
 }
