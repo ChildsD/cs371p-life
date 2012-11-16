@@ -11,11 +11,11 @@ E-mail: Childsd@cs.utexas.edu
 Estimated number of hours: 18
 Actual    number of hours:
 
-Partner First Name:
-Partner Last Name:
-Partner EID:
-Partner E-mail:
-Partner Estimated number of hours:
+Partner First Name:Ang
+Partner Last Name:Li
+Partner EID:AL27536
+Partner E-mail:ang.li@utexas.edu
+Partner Estimated number of hours:20
 Partner Actual    number of hours:
 
 Turnin CS Username: childsd
