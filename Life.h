@@ -40,8 +40,10 @@ public:
         if (T::is_cell) {
         }
         
-        int next_r;
-        int next_c;
+        int next_r = 0;
+        int next_c = 0;
+        bool fred_mutate = false;
+        
         for (int turn=0; turn<num_turns; ++turn) {
             for (int r=0; r<num_r; ++r) {
                 for (int c=0; c<num_c; ++c) {
@@ -60,8 +62,18 @@ public:
                         }
                     }
                     
+                    //check if this cell can potentially mutate
+                    if (T::is_cell) {
+                        if (cur_cell.status=='1') {
+                            fred_mutate = true;
+                        }
+                    }
                     //update according to how many alive neighbors exist
                     cur_cell.update(alive_cnt);
+                    //check if this cell 
+                    if (fred_mutate && cur_cell.status=='2') {
+                        //change cur_cell to a conway
+                    }
                     
                 }
             }
