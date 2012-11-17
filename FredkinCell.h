@@ -9,10 +9,14 @@ using namespace std;
 
 class FredkinCell : public AbstractCell {
 public:
+    static bool is_cell;
+    const int num_neighbor = 4;
+    const int d_vec[4][2] = { {0,-1}, {-1,0}, {0,1}, {1,0}, {-1,-1}, {-1, 1}, {-1,1}, {1,1} };
     char status;
     size_t age;
     
     FredkinCell() {
+        is_cell = true;
         age = 0;
         status = '-';
     }
@@ -24,7 +28,7 @@ public:
         }
     }
     
-    void update() {
+    FredkinCell& update() {
         age += 1;
     }
     
@@ -39,4 +43,4 @@ public:
             status = '+';
         }
     }
-}
+};
