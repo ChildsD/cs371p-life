@@ -9,11 +9,13 @@ using namespace std;
 
 template<typename T>
 class Life {
-    typedef vector< vector<T*> >* worldPtr;
-    vector< vector<T*> > _world1;
-    vector< vector<T*> > _world2;
-    worldPtr cur_world;
-    worldPtr next_world;
+    typedef vector< vector<T*> > World;
+    typedef World* p_World;
+    
+    World _world1;
+    World _world2;
+    p_World cur_world;
+    p_World next_world;
     size_t num_r;
     size_t num_c;
     size_t turn;
@@ -65,7 +67,7 @@ public:
             }
             
             //at the end of each turn, swap pointers to worlds
-            worldPtr temp = cur_world;
+            p_World temp = cur_world;
             cur_world = next_world;
             next_world = cur_world;
         }
