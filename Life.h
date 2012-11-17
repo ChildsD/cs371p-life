@@ -23,10 +23,8 @@ class Life {
 public:
     /*
      * Constructor
-     * @param r
-     *     number of rows in this world
-     * @param c
-     *     number of columns in this world
+     * @param fName
+     *    Name of the input file
      */
     Life(string fName) {
         
@@ -74,7 +72,6 @@ public:
                     if (fred_mutate && cur_cell.status=='2') {
                         //change cur_cell to a conway
                     }
-                    
                 }
             }
             
