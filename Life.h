@@ -14,23 +14,9 @@ class Life {
     vector< vector<T*> > _world2;
     worldPtr cur_world;
     worldPtr next_world;
-    deque<creature> life_list;
     size_t num_r;
     size_t num_c;
     size_t turn;
-    
-    /*
-     * get a pointer to the content of one location
-     * @param x
-     *     row coordinate of the location
-     * @param y
-     *     col coordinate of the location
-     * @return
-     *     a pointer to the creature instance at the specified location; if the location is empty, it's NULL
-     */
-    creature* get_content(size_t x, size_t y) {
-        return _world[x][y];
-    }
     
 public:
     /*
@@ -40,20 +26,16 @@ public:
      * @param c
      *     number of columns in this world
      */
-    Darwin(size_t r, size_t c) {
+    Life(string fName) {
         
-        vector<T> row(c, NULL);
-        vector<vector<T> > world(r, row);
-        _world = world;
-        num_r = r;
-        num_c = c;
-        turn = 0;
     }
     
-    
+    bool in_bound(int r, int c) {
+        return r>=0 && (unsigned int)r<num_r && c>=0 && (unsigned int)c<num_c;
+    }
     
     void run(size_t num_turns) {
-        if (T.is_cell) {
+        if (T::is_cell) {
         }
         
         int next_r;

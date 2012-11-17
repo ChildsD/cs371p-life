@@ -22,8 +22,8 @@ public:
         status = stat;
     }
     
-    ConwayCell& update(size_t alive_neighbor) {
-        
+    int get_vec(size_t i, size_t j) {
+        return d_vec[i][j];
     }
     
     void update(size_t neighbor) {
