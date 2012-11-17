@@ -11,7 +11,7 @@ class ConwayCell : public AbstractCell {
 public:
     static bool is_cell;
     const int num_neighbor = 4;
-    const int d_vec[4][2] = { {0,-1}, {-1,0}, {0,1}, {1,0} };
+    const int d_vec[8][2] = { {0,-1}, {-1,0}, {0,1}, {1,0}, {-1,-1}, {-1, 1}, {-1,1}, {1,1} };
     char status;
     
     ConwayCell() {

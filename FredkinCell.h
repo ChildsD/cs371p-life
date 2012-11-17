@@ -11,7 +11,7 @@ class FredkinCell : public AbstractCell {
 public:
     static bool is_cell;
     const int num_neighbor = 4;
-    const int d_vec[8][2] = { {0,-1}, {-1,0}, {0,1}, {1,0}, {-1,-1}, {-1, 1}, {-1,1}, {1,1} };
+    const int d_vec[4][2] = { {0,-1}, {-1,0}, {0,1}, {1,0} };
     char status;
     size_t age;
     
@@ -32,11 +32,22 @@ public:
     }
     
     void update(size_t neighbor) {
-        if (neighbor==3) {
+        bool aging = false;
+        if (status != '-') {
+            aging = true;
+        }
+        if (neighbor==1 || neighbor==3) {
             resurrect();
-        }else if (neighbor<2 || neighbor>3){
+        }else{
             die();
         }
+        if (aging && status != '-') {
+            age += 1;
+            if (age<10) {
+                status = age + '0';
+            }
+        }
+        
     }
     
     void die() {
