@@ -24,30 +24,44 @@ public:
         status = stat;
         if (status>='0' && status <='9') {
             age = status - '0';
+        }else{
+            age = 10;
         }
+    }
+    
+    FredkinCell(char stat, size_t new_age) {
+        status = stat;
+        age = age;
+    }
+    
+    FredkinCell* clone() {
+        return new FredkinCell(*this);
     }
     
     int get_vec(size_t i, size_t j) {
         return d_vec[i][j];
     }
     
-    void update(size_t neighbor) {
+    FredkinCell* update(size_t neighbor) {
         bool aging = false;
         if (status != '-') {
             aging = true;
         }
         if (neighbor==1 || neighbor==3) {
-            resurrect();
-        }else{
-            die();
-        }
-        if (aging && status != '-') {
-            age += 1;
-            if (age<10) {
-                status = age + '0';
+            size_t new_age = age;
+            if (aging==true) {
+                new_age += 1;
             }
+            char new_stat;
+            if (new_age<10) {
+                new_stat = new_age+'0';
+            }else{
+                new_stat = '+';
+            }
+            return new FredkinCell(new_stat, new_age);
+        }else{
+            return new FredkinCell('-', age);
         }
-        
     }
     
     void die() {

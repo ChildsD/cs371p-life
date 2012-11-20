@@ -29,7 +29,14 @@ public:
     Life(string fName) {
         
     }
-    
+
+    /*
+     * Check if the location specified by input coordinates is in bound
+     * @param r
+     *     row coordinate of the location
+     * @param c
+     *     col coordinate of the location
+     */
     bool in_bound(int r, int c) {
         return r>=0 && (unsigned int)r<num_r && c>=0 && (unsigned int)c<num_c;
     }
@@ -67,7 +74,7 @@ public:
                         }
                     }
                     //update according to how many alive neighbors exist
-                    cur_cell.update(alive_cnt);
+                    (*next_world)[r][c] = cur_cell.update(alive_cnt);
                     //check if this cell 
                     if (fred_mutate && cur_cell.status=='2') {
                         //change cur_cell to a conway

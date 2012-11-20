@@ -22,6 +22,10 @@ public:
         return ac->get_vec(i,j);
     }
     
+    AbstractCell* update(size_t neighbor) {
+        return ac->update(neighbor);
+    }
+    
     Cell& operator=(const Cell& that) {
         return *this;
     }
