@@ -18,7 +18,8 @@ class Life {
     p_World next_world;
     size_t num_r;
     size_t num_c;
-    size_t turn;
+    size_t gen;
+    size_t population;
     
 public:
     /*
@@ -27,7 +28,8 @@ public:
      *    Name of the input file
      */
     Life(string fName) {
-        
+        gen=0;
+        population=0;
     }
 
     /*
@@ -50,11 +52,14 @@ public:
         bool fred_mutate = false;
         
         for (int turn=0; turn<num_turns; ++turn) {
+            population = 0;
             for (int r=0; r<num_r; ++r) {
                 for (int c=0; c<num_c; ++c) {
                     //reference to current cell
                     T& cur_cell = (*cur_world)[r][c];
-                    
+                    if (!((*next_world)[r][c].status=='-' || (*next_world)[r][c].status=='.')) {
+                        population += 1;
+                    }
                     //go through each in-bound neighbor and count the number of alive ones
                     int alive_cnt = 0;
                     for (int i=0; i<cur_cell.num_neighbor; ++i) {
@@ -80,6 +85,7 @@ public:
                         //change cur_cell to a conway
                     }
                 }
+                gen+=1;
             }
             
             //at the end of each turn, swap pointers to worlds
@@ -87,8 +93,22 @@ public:
             cur_world = next_world;
             next_world = cur_world;
         }
-        
-        
     }
     
+    /*
+     * Print the grid
+     * @param w
+     *      ostream to print to
+     */
+    void print(std::ostream& w) {
+        w << "Generation = " << gen << ", Population = " << population << ".";
+        w << endl;
+        for (size_t i=0; i<num_r; ++i) {
+            for (size_t j=0; j<num_c; ++j) {
+                w << (*cur_world)[i][j].status;
+            }
+            w << endl;
+        }
+        w << endl;
+    }
 };
