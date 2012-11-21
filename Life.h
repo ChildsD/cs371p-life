@@ -27,10 +27,37 @@ public:
      * @param fName
      *    Name of the input file
      */
-    Life(string fName) {
-        gen=0;
-        population=0;
-    }
+    // Life(string fName) {
+    //     gen=0;
+    //     population=0;
+    // }
+     Life(std::istream& in)
+     {
+        gen = 0;
+        in >> num_r;
+        in >> num_c;
+
+        vector<T> tempSingle(num_r + 2);
+        vector<vector<T> > tempBoard(num_c + 2, tempSingle);
+        _world1 = tempBoard;
+
+        char c;
+        int tempRow;
+        int tempCol;
+
+        while(!in.eof())
+        {
+            while(in.peek() != '\n' && !in.eof())
+            {
+                in >> c;
+                map[tempCol+1][tempRow+1].set(c);
+                ++tempCol;
+            }
+            in.get();//Skips to next line (hopefully)
+            ++tempRow;
+            tempCol = 0;
+        }
+     }
 
     /*
      * Check if the location specified by input coordinates is in bound
@@ -95,20 +122,19 @@ public:
         }
     }
     
-    /*
-     * Print the grid
-     * @param w
-     *      ostream to print to
-     */
-    void print(std::ostream& w) {
-        w << "Generation = " << gen << ", Population = " << population << ".";
-        w << endl;
-        for (size_t i=0; i<num_r; ++i) {
-            for (size_t j=0; j<num_c; ++j) {
-                w << (*cur_world)[i][j].status;
+    /**
+    * prints board
+    */
+    void print(){
+        printf("Gen: %d, Pop: %d\n", gen, population);
+        for(int i = 1; i < cur_world[0].size() - 1; ++i)
+        {
+            for(int j = 1;  < cur_world.size() - 1; ++j)
+            {
+                cur_world[j][i].print();
             }
-            w << endl;
+            printf("\n");   
         }
-        w << endl;
+        printf("\n");
     }
 };
