@@ -56,13 +56,6 @@ int main () {
 
     try {
         cout << "*** Life<ConwayCell> 109x69 ***" << endl;
-        ifstream infile("RunLifeConway.in");
-        //char * dir = getcwd(NULL, 0);
-        //printf("Current dir: %s", dir);
-
-        //cout << a << "x" << b << endl;
-        Life<ConwayCell> exe(infile);
-        exe.print(cout);
         /*
         read RunLifeConway.in // assume all Conway cells
         Print grid.
@@ -91,6 +84,17 @@ int main () {
         Simulate 2 moves.
         Print every grid.
         */
+        ifstream infile("RunLifeFredkin.in");
+        //char * dir = getcwd(NULL, 0);
+        //printf("Current dir: %s", dir);
+        
+        Life<FredkinCell> exe(infile);
+        exe.print(cout);
+        exe.run(1);
+        exe.print(cout);
+        exe.run(1);
+        exe.print(cout);
+        
         }
     catch (const invalid_argument&) {
         assert(false);}

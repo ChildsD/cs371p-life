@@ -45,6 +45,9 @@ public:
             getline(infile, line);
             for (size_t c=0; c<num_c; ++c) {
                 (*cur_world)[r][c] = new T(line.at(c));
+                if (!(line.at(c)=='-' || line.at(c)=='.')) {
+                    population += 1;
+                }
             }
         }
     }
@@ -73,42 +76,44 @@ public:
             for (int r=0; r<num_r; ++r) {
                 for (int c=0; c<num_c; ++c) {
                     //reference to current cell
-                    T& cur_cell = (*cur_world)[r][c];
-                    if (!((*next_world)[r][c].status=='-' || (*next_world)[r][c].status=='.')) {
-                        population += 1;
-                    }
+                    T& cur_cell = *(*cur_world)[r][c];
+                    //count the number of alive ones
+                    
                     //go through each in-bound neighbor and count the number of alive ones
                     int alive_cnt = 0;
                     for (int i=0; i<cur_cell.num_neighbor; ++i) {
                         next_r = r + cur_cell.d_vec[i][0];
-                        next_c = c + cur_cell.d_vec[i][2];
+                        next_c = c + cur_cell.d_vec[i][1];
                         if (in_bound(next_r, next_c)) {
-                            if ((*cur_world)[next_r][next_c].status!='.' && (*cur_world)[next_r][next_c].status!='-') {
+                            if ((*cur_world)[next_r][next_c]->status!='.' && (*cur_world)[next_r][next_c]->status!='-') {
                                 alive_cnt += 1;
                             }
                         }
                     }
                     
                     //check if this cell can potentially mutate
-                    if (T::is_cell) {
-                        if (cur_cell.status=='1') {
-                            fred_mutate = true;
-                        }
+                    if (T::is_cell && cur_cell.status=='1') {
+                        fred_mutate = true;
                     }
                     //update according to how many alive neighbors exist
                     (*next_world)[r][c] = cur_cell.update(alive_cnt);
                     //check if this cell 
                     if (fred_mutate && cur_cell.status=='2') {
                         //change cur_cell to a conway
+                        
                     }
+                    if (!((*next_world)[r][c]->status=='-' || (*next_world)[r][c]->status=='.')) {
+                        population += 1;
+                    }
+                    alive_cnt = 0;
+                    fred_mutate = false;
                 }
-                gen+=1;
             }
-            
+            gen+=1;
             //at the end of each turn, swap pointers to worlds
             p_World temp = cur_world;
             cur_world = next_world;
-            next_world = cur_world;
+            next_world = temp;
         }
     }
     
@@ -130,7 +135,6 @@ public:
     }
     
     ~Life() {
-        delete cur_world;
-        delete next_world;
+    
     }
 };
