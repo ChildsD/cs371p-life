@@ -66,7 +66,19 @@ int main () {
         Simulate 2500 moves.
         Print grid.
         */
-        }
+        ifstream infile("RunLifeConway.in");
+        //char * dir = getcwd(NULL, 0);
+        //printf("Current dir: %s", dir);
+        
+        Life<ConwayCell> exe(infile);
+        exe.print(cout);
+        exe.run(283);
+        exe.print(cout);
+        exe.run(40);
+        exe.print(cout);
+        exe.run(2500);
+        exe.print(cout);
+    }
     catch (const invalid_argument&) {
         assert(false);}
     catch (const out_of_range&) {
@@ -84,9 +96,8 @@ int main () {
         Simulate 2 moves.
         Print every grid.
         */
+        
         ifstream infile("RunLifeFredkin.in");
-        //char * dir = getcwd(NULL, 0);
-        //printf("Current dir: %s", dir);
         
         Life<FredkinCell> exe(infile);
         exe.print(cout);
@@ -95,7 +106,7 @@ int main () {
         exe.run(1);
         exe.print(cout);
         
-        }
+    }
     catch (const invalid_argument&) {
         assert(false);}
     catch (const out_of_range&) {

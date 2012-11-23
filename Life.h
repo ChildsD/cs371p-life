@@ -77,19 +77,21 @@ public:
                 for (int c=0; c<num_c; ++c) {
                     //reference to current cell
                     T& cur_cell = *(*cur_world)[r][c];
-                    //count the number of alive ones
-                    
                     //go through each in-bound neighbor and count the number of alive ones
                     int alive_cnt = 0;
+                    
+                    //cout << r << "x" << c << " neighbors are ";
                     for (int i=0; i<cur_cell.num_neighbor; ++i) {
                         next_r = r + cur_cell.d_vec[i][0];
                         next_c = c + cur_cell.d_vec[i][1];
                         if (in_bound(next_r, next_c)) {
                             if ((*cur_world)[next_r][next_c]->status!='.' && (*cur_world)[next_r][next_c]->status!='-') {
+                                //cout << (*cur_world)[next_r][next_c]->status;
                                 alive_cnt += 1;
                             }
                         }
                     }
+                    //cout << endl;
                     
                     //check if this cell can potentially mutate
                     if (T::is_cell && cur_cell.status=='1') {
@@ -102,6 +104,8 @@ public:
                         //change cur_cell to a conway
                         
                     }
+                    
+                    //count the number of population
                     if (!((*next_world)[r][c]->status=='-' || (*next_world)[r][c]->status=='.')) {
                         population += 1;
                     }
