@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <cstdlib>
+#include <fstream>
 
 using namespace std;
 
@@ -12,8 +13,6 @@ class Life {
     typedef vector< vector<T*> > World;
     typedef World* p_World;
     
-    World _world1;
-    World _world2;
     p_World cur_world;
     p_World next_world;
     size_t num_r;
@@ -22,42 +21,33 @@ class Life {
     size_t population;
     
 public:
+    
     /*
      * Constructor
      * @param fName
      *    Name of the input file
      */
-    // Life(string fName) {
-    //     gen=0;
-    //     population=0;
-    // }
-     Life(std::istream& in)
-     {
-        gen = 0;
-        in >> num_r;
-        in >> num_c;
-
-        vector<T> tempSingle(num_r + 2);
-        vector<vector<T> > tempBoard(num_c + 2, tempSingle);
-        _world1 = tempBoard;
-
-        char c;
-        int tempRow;
-        int tempCol;
-
-        while(!in.eof())
-        {
-            while(in.peek() != '\n' && !in.eof())
-            {
-                in >> c;
-                map[tempCol+1][tempRow+1].set(c);
-                ++tempCol;
+    Life(ifstream& infile) {
+        gen=0;
+        population=0;
+        
+        string line;
+        getline(infile, line);
+        num_r = atoi(line.c_str());
+        getline(infile, line);
+        num_c = atoi(line.c_str());
+        
+        vector<T*> row(num_c, 0);
+        cur_world = new World(num_r, row);
+        next_world = new World(num_r, row);
+        
+        for (size_t r=0; r<num_r; ++r) {
+            getline(infile, line);
+            for (size_t c=0; c<num_c; ++c) {
+                (*cur_world)[r][c] = new T(line.at(c));
             }
-            in.get();//Skips to next line (hopefully)
-            ++tempRow;
-            tempCol = 0;
         }
-     }
+    }
 
     /*
      * Check if the location specified by input coordinates is in bound
@@ -122,19 +112,25 @@ public:
         }
     }
     
-    /**
-    * prints board
-    */
-    void print(){
-        printf("Gen: %d, Pop: %d\n", gen, population);
-        for(int i = 1; i < cur_world[0].size() - 1; ++i)
-        {
-            for(int j = 1;  < cur_world.size() - 1; ++j)
-            {
-                cur_world[j][i].print();
+    /*
+     * Print the grid
+     * @param w
+     *      ostream to print to
+     */
+    void print(std::ostream& w) {
+        w << "Generation = " << gen << ", Population = " << population << ".";
+        w << endl;
+        for (size_t i=0; i<num_r; ++i) {
+            for (size_t j=0; j<num_c; ++j) {
+                w << (*cur_world)[i][j]->status;
             }
-            printf("\n");   
+            w << endl;
         }
-        printf("\n");
+        w << endl;
+    }
+    
+    ~Life() {
+        delete cur_world;
+        delete next_world;
     }
 };

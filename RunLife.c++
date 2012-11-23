@@ -28,7 +28,19 @@ To document the program:
 
 #include <cassert>   // assert
 #include <iostream>  // cout, endl
+#include <fstream>
+#include <sstream>
 #include <stdexcept> // invalid_argument, out_of_range
+#include <string>
+
+//#define _POSIX_SOURCE
+//#include <unistd.h>
+
+#include "AbstractCell.h"
+#include "ConwayCell.h"
+#include "FredkinCell.h"
+#include "Cell.h"
+#include "Life.h"
 
 // ----
 // main
@@ -44,6 +56,13 @@ int main () {
 
     try {
         cout << "*** Life<ConwayCell> 109x69 ***" << endl;
+        ifstream infile("RunLifeConway.in");
+        //char * dir = getcwd(NULL, 0);
+        //printf("Current dir: %s", dir);
+
+        //cout << a << "x" << b << endl;
+        Life<ConwayCell> exe(infile);
+        exe.print(cout);
         /*
         read RunLifeConway.in // assume all Conway cells
         Print grid.
