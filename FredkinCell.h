@@ -36,6 +36,15 @@ public:
         age = new_age;
     }
     
+    /*
+     * Returns a value of the delta vector at a specified location
+     * @param i
+     *      pair index
+     * @param j
+     *      number index
+     * @return
+     *      delta value
+     */
     int get_vec(size_t i, size_t j) {
         return d_vec[i][j];
     }
@@ -47,6 +56,9 @@ public:
     char get_status() {
         return status;
     }
+    
+    //dummy constructor
+    FredkinCell(ConwayCell* p) {}
     
     
     FredkinCell* update(size_t neighbor) {

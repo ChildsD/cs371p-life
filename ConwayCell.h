@@ -21,6 +21,8 @@ public:
     ConwayCell(char stat) {
         status = stat;
     }
+    //dummy constructor
+    ConwayCell(ConwayCell* p) {}
     
     size_t get_num_neighbor() {
         return num_neighbor;
