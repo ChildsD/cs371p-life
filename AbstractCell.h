@@ -10,11 +10,16 @@ using namespace std;
 
 class AbstractCell {
 public:
-    char status;
-    const int num_neighbor=0;
+    const static int num_neighbor;
     virtual void die()=0;
     virtual void resurrect()=0;
-    virtual void update(size_t neighbor)=0;
+    virtual AbstractCell* update(size_t neighbor)=0;
     virtual int get_vec(size_t i, size_t j)=0;
+    virtual char get_status()=0;
+    virtual AbstractCell* clone()=0;
     virtual ~AbstractCell()=0;
 };
+
+AbstractCell::~AbstractCell() {}
+
+const int AbstractCell::num_neighbor=0;
