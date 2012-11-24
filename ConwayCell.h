@@ -10,8 +10,8 @@ using namespace std;
 class ConwayCell : public AbstractCell {
 public:
     static bool is_cell;
-    const int num_neighbor = 4;
-    const int d_vec[8][2] = { {0,-1}, {-1,0}, {0,1}, {1,0}, {-1,-1}, {-1, 1}, {-1,1}, {1,1} };
+    const static int num_neighbor;
+    const static int d_vec[8][2];
     char status;
     
     ConwayCell() {
@@ -39,6 +39,10 @@ public:
         return new ConwayCell(*this);
     }
     
+    char get_status() {
+        return status;
+    }
+    
     inline void die() {
         status = '.';
     }
@@ -46,6 +50,10 @@ public:
     inline void resurrect() {
         status = '*';
     }
+    
+    ~ConwayCell(){}
 };
 
+const int ConwayCell::num_neighbor = 8;
 bool ConwayCell::is_cell = false;
+const int ConwayCell::d_vec[8][2] = { {0,-1}, {-1,0}, {0,1}, {1,0}, {-1,-1}, {1, -1}, {-1,1}, {1,1} };

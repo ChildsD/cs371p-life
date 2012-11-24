@@ -44,6 +44,11 @@ public:
         return d_vec[i][j];
     }
     
+    char get_status() {
+        return status;
+    }
+    
+    
     FredkinCell* update(size_t neighbor) {
         bool aging = false;
         if (status != '-') {

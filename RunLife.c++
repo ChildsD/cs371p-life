@@ -53,64 +53,64 @@ int main () {
     // ------------------
     // Conway Cell 109x69
     // ------------------
-
-    try {
-        cout << "*** Life<ConwayCell> 109x69 ***" << endl;
-        /*
-        read RunLifeConway.in // assume all Conway cells
-        Print grid.
-        Simulate 283 moves.
-        Print grid.
-        Simulate 40 moves.
-        Print grid.
-        Simulate 2500 moves.
-        Print grid.
-        */
-        ifstream infile("RunLifeConway.in");
-        //char * dir = getcwd(NULL, 0);
-        //printf("Current dir: %s", dir);
-        
-        Life<ConwayCell> exe(infile);
-        exe.print(cout);
-        exe.run(283);
-        exe.print(cout);
-        exe.run(40);
-        exe.print(cout);
-        exe.run(2500);
-        exe.print(cout);
-    }
-    catch (const invalid_argument&) {
-        assert(false);}
-    catch (const out_of_range&) {
-        assert(false);}
-
-    // ------------------
-    // Fredkin Cell 20x20
-    // ------------------
-
-    try {
-        cout << "*** Life<FredkinCell> 20x20 ***" << endl;
-        /*
-        read RunLifeFredkin.in // assume all Fredkin cells
-        Print grid.
-        Simulate 2 moves.
-        Print every grid.
-        */
-        
-        ifstream infile("RunLifeFredkin.in");
-        
-        Life<FredkinCell> exe(infile);
-        exe.print(cout);
-        exe.run(1);
-        exe.print(cout);
-        exe.run(1);
-        exe.print(cout);
-        
-    }
-    catch (const invalid_argument&) {
-        assert(false);}
-    catch (const out_of_range&) {
-        assert(false);}
+//
+//    try {
+//        cout << "*** Life<ConwayCell> 109x69 ***" << endl;
+//        /*
+//        read RunLifeConway.in // assume all Conway cells
+//        Print grid.
+//        Simulate 283 moves.
+//        Print grid.
+//        Simulate 40 moves.
+//        Print grid.
+//        Simulate 2500 moves.
+//        Print grid.
+//        */
+//        ifstream infile("RunLifeConway.in");
+//        //char * dir = getcwd(NULL, 0);
+//        //printf("Current dir: %s", dir);
+//        
+//        Life<ConwayCell> exe(infile);
+//        exe.print(cout);
+//        exe.run(283);
+//        exe.print(cout);
+//        exe.run(40);
+//        exe.print(cout);
+//        exe.run(2500);
+//        exe.print(cout);
+//    }
+//    catch (const invalid_argument&) {
+//        assert(false);}
+//    catch (const out_of_range&) {
+//        assert(false);}
+//
+//    // ------------------
+//    // Fredkin Cell 20x20
+//    // ------------------
+//
+//    try {
+//        cout << "*** Life<FredkinCell> 20x20 ***" << endl;
+//        /*
+//        read RunLifeFredkin.in // assume all Fredkin cells
+//        Print grid.
+//        Simulate 2 moves.
+//        Print every grid.
+//        */
+//        
+//        ifstream infile("RunLifeFredkin.in");
+//        
+//        Life<FredkinCell> exe(infile);
+//        exe.print(cout);
+//        exe.run(1);
+//        exe.print(cout);
+//        exe.run(1);
+//        exe.print(cout);
+//        
+//    }
+//    catch (const invalid_argument&) {
+//        assert(false);}
+//    catch (const out_of_range&) {
+//        assert(false);}
 
     // ----------
     // Cell 20x20
@@ -124,6 +124,14 @@ int main () {
         Simulate 5 moves.
         Print every grid.
         */
+        ifstream infile("RunLife.in");
+        
+        Life<Cell> exe(infile);
+        exe.print(cout);
+        exe.run(1);
+        exe.print(cout);
+        exe.run(1);
+        exe.print(cout);
         }
     catch (const invalid_argument&) {
         assert(false);}

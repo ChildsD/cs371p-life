@@ -82,10 +82,10 @@ public:
                     
                     //cout << r << "x" << c << " neighbors are ";
                     for (int i=0; i<cur_cell.num_neighbor; ++i) {
-                        next_r = r + cur_cell.d_vec[i][0];
-                        next_c = c + cur_cell.d_vec[i][1];
+                        next_r = r + cur_cell.get_vec(i, 0);
+                        next_c = c + cur_cell.get_vec(i, 1);
                         if (in_bound(next_r, next_c)) {
-                            if ((*cur_world)[next_r][next_c]->status!='.' && (*cur_world)[next_r][next_c]->status!='-') {
+                            if ((*cur_world)[next_r][next_c]->get_status()!='.' && (*cur_world)[next_r][next_c]->get_status()!='-') {
                                 //cout << (*cur_world)[next_r][next_c]->status;
                                 alive_cnt += 1;
                             }
@@ -94,19 +94,19 @@ public:
                     //cout << endl;
                     
                     //check if this cell can potentially mutate
-                    if (T::is_cell && cur_cell.status=='1') {
+                    if (T::is_cell && cur_cell.get_status()=='1') {
                         fred_mutate = true;
                     }
                     //update according to how many alive neighbors exist
                     (*next_world)[r][c] = cur_cell.update(alive_cnt);
                     //check if this cell 
-                    if (fred_mutate && cur_cell.status=='2') {
+                    if (fred_mutate && cur_cell.get_status()=='2') {
                         //change cur_cell to a conway
                         
                     }
                     
                     //count the number of population
-                    if (!((*next_world)[r][c]->status=='-' || (*next_world)[r][c]->status=='.')) {
+                    if (!((*next_world)[r][c]->get_status()=='-' || (*next_world)[r][c]->get_status()=='.')) {
                         population += 1;
                     }
                     alive_cnt = 0;
@@ -131,7 +131,7 @@ public:
         w << endl;
         for (size_t i=0; i<num_r; ++i) {
             for (size_t j=0; j<num_c; ++j) {
-                w << (*cur_world)[i][j]->status;
+                w << (*cur_world)[i][j]->get_status();
             }
             w << endl;
         }
@@ -139,6 +139,7 @@ public:
     }
     
     ~Life() {
-    
+        delete cur_world;
+        delete next_world;
     }
 };
