@@ -33,15 +33,15 @@ public:
     
     FredkinCell(char stat, size_t new_age) {
         status = stat;
-        age = age;
-    }
-    
-    FredkinCell* clone() {
-        return new FredkinCell(*this);
+        age = new_age;
     }
     
     int get_vec(size_t i, size_t j) {
         return d_vec[i][j];
+    }
+    
+    size_t get_num_neighbor() {
+        return num_neighbor;
     }
     
     char get_status() {
@@ -56,10 +56,11 @@ public:
         }
         if (neighbor==1 || neighbor==3) {
             size_t new_age = age;
+            char new_stat;
+            
             if (aging==true) {
                 new_age += 1;
             }
-            char new_stat;
             if (new_age<10) {
                 new_stat = new_age+'0';
             }else{
@@ -68,18 +69,6 @@ public:
             return new FredkinCell(new_stat, new_age);
         }else{
             return new FredkinCell('-', age);
-        }
-    }
-    
-    void die() {
-        status = '-';
-    }
-    
-    void resurrect() {
-        if (age<10) {
-            status = age+'0';
-        }else{
-            status = '+';
         }
     }
     

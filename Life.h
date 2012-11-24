@@ -70,7 +70,7 @@ public:
         int next_r = 0;
         int next_c = 0;
         bool fred_mutate = false;
-        
+        size_t num_neighbor = 0;
         for (int turn=0; turn<num_turns; ++turn) {
             population = 0;
             for (int r=0; r<num_r; ++r) {
@@ -81,7 +81,8 @@ public:
                     int alive_cnt = 0;
                     
                     //cout << r << "x" << c << " neighbors are ";
-                    for (int i=0; i<cur_cell.num_neighbor; ++i) {
+                    num_neighbor = cur_cell.get_num_neighbor();
+                    for (int i=0; i<num_neighbor; ++i) {
                         next_r = r + cur_cell.get_vec(i, 0);
                         next_c = c + cur_cell.get_vec(i, 1);
                         if (in_bound(next_r, next_c)) {
@@ -99,10 +100,11 @@ public:
                     }
                     //update according to how many alive neighbors exist
                     (*next_world)[r][c] = cur_cell.update(alive_cnt);
-                    //check if this cell 
-                    if (fred_mutate && cur_cell.get_status()=='2') {
+                    
+                    //check if this cell is supposed to mutate
+                    if (fred_mutate && (*next_world)[r][c]->get_status()=='2') {
                         //change cur_cell to a conway
-                        
+                        (*next_world)[r][c] = new Cell(new ConwayCell('*'));
                     }
                     
                     //count the number of population

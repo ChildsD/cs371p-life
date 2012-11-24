@@ -132,6 +132,8 @@ int main () {
         exe.print(cout);
         exe.run(1);
         exe.print(cout);
+        exe.run(1);
+        exe.print(cout);
         }
     catch (const invalid_argument&) {
         assert(false);}

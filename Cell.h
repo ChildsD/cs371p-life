@@ -10,12 +10,12 @@ using namespace std;
 class Cell {
 public:
     static bool is_cell;
-    int num_neighbor;
+    size_t num_neighbor;
     AbstractCell* ac;
     
     Cell(AbstractCell* that) {
         ac = that;
-        num_neighbor = that->num_neighbor;
+        num_neighbor = that->get_num_neighbor();
     }
     
     Cell(char stat) {
@@ -28,6 +28,10 @@ public:
     
     char get_status() {
         return ac->get_status();
+    }
+    
+    size_t get_num_neighbor() {
+        return ac->get_num_neighbor();
     }
     
     int get_vec(size_t i, size_t j) {

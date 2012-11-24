@@ -22,8 +22,8 @@ public:
         status = stat;
     }
     
-    ConwayCell* clone() {
-        return new ConwayCell(*this);
+    size_t get_num_neighbor() {
+        return num_neighbor;
     }
     
     int get_vec(size_t i, size_t j) {
@@ -41,14 +41,6 @@ public:
     
     char get_status() {
         return status;
-    }
-    
-    inline void die() {
-        status = '.';
-    }
-    
-    inline void resurrect() {
-        status = '*';
     }
     
     ~ConwayCell(){}
