@@ -71,10 +71,10 @@ public:
         int next_c = 0;
         bool fred_mutate = false;
         size_t num_neighbor = 0;
-        for (int turn=0; turn<num_turns; ++turn) {
+        for (size_t turn=0; turn<num_turns; ++turn) {
             population = 0;
-            for (int r=0; r<num_r; ++r) {
-                for (int c=0; c<num_c; ++c) {
+            for (int r=0; (size_t) r<num_r; ++r) {
+                for (int c=0; (size_t) c<num_c; ++c) {
                     
                     //reference to current cell
                     T& cur_cell = *(*cur_world)[r][c];
@@ -83,7 +83,7 @@ public:
                     int alive_cnt = 0;
                     //cout << r << "x" << c << " neighbors are ";
                     num_neighbor = cur_cell.get_num_neighbor();
-                    for (int i=0; i<num_neighbor; ++i) {
+                    for (size_t i=0; i<num_neighbor; ++i) {
                         next_r = r + cur_cell.get_vec(i, 0);
                         next_c = c + cur_cell.get_vec(i, 1);
                         if (in_bound(next_r, next_c)) {
