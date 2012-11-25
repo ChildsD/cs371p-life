@@ -19,7 +19,11 @@ public:
     }
     
     ConwayCell(char stat) {
-        status = stat;
+        if (stat=='*' || stat=='.') {
+            status = stat;
+        }else{
+            throw invalid_argument("invalid status for ConwayCell");
+        }
     }
     //dummy constructor
     ConwayCell(ConwayCell* p) {}

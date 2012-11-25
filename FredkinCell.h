@@ -26,8 +26,10 @@ public:
             age = status - '0';
         }else if (status=='-'){
             age = 0;
-        }else{
+        }else if (status=='+'){
             age = 10;
+        }else{
+            throw invalid_argument("invalid status for FredkinCell");
         }
     }
     
