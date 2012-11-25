@@ -99,6 +99,7 @@ public:
                         fred_mutate = true;
                     }
                     //update according to how many alive neighbors exist
+                    delete (*next_world)[r][c];
                     (*next_world)[r][c] = cur_cell.update(alive_cnt);
                     
                     //check if this cell is supposed to mutate
