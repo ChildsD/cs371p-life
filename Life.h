@@ -104,7 +104,8 @@ public:
                     
                     //check if this cell is supposed to mutate
                     if (fred_mutate && (*next_world)[r][c]->get_status()=='2') {
-                        //change cur_cell to a conway
+                        //mutate to a live conway
+                        delete (*next_world)[r][c];
                         (*next_world)[r][c] = new T(new ConwayCell('*'));
                     }
                     
