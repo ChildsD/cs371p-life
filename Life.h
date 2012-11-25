@@ -143,6 +143,16 @@ public:
     }
     
     ~Life() {
+        for (int r=0; (size_t) r<num_r; ++r) {
+            for (int c=0; (size_t) c<num_c; ++c) {
+                delete (*cur_world)[r][c];
+            }
+        }
+        for (int r=0; (size_t) r<num_r; ++r) {
+            for (int c=0; (size_t) c<num_c; ++c) {
+                delete (*next_world)[r][c];
+            }
+        }
         delete cur_world;
         delete next_world;
     }
