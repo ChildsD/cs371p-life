@@ -384,6 +384,13 @@ struct TestLife : CppUnit::TestFixture {
     CPPUNIT_TEST(test_get_status_0);
     CPPUNIT_TEST(test_get_status_1);
     CPPUNIT_TEST(test_get_status_2);
+    CPPUNIT_TEST(test_in_bound_0);
+    CPPUNIT_TEST(test_in_bound_1);
+    CPPUNIT_TEST(test_in_bound_2);
+    CPPUNIT_TEST(test_run_0);
+    CPPUNIT_TEST(test_run_1);
+    CPPUNIT_TEST(test_run_2);
+    CPPUNIT_TEST(test_run_3);
     // CPPUNIT_TEST(test_get_num_neighbor_0);
     // CPPUNIT_TEST(test_get_num_neighbor_1);
     // CPPUNIT_TEST(test_get_num_neighbor_2);
@@ -393,14 +400,6 @@ struct TestLife : CppUnit::TestFixture {
     // CPPUNIT_TEST(test_update_0);
     // CPPUNIT_TEST(test_update_1);
     // CPPUNIT_TEST(test_update_2);
-    CPPUNIT_TEST(test_in_bound_0);
-    CPPUNIT_TEST(test_in_bound_1);
-    CPPUNIT_TEST(test_in_bound_2);
-    CPPUNIT_TEST(test_run_0);
-    CPPUNIT_TEST(test_run_1);
-    CPPUNIT_TEST(test_run_2);
-    CPPUNIT_TEST(test_run_3);
-
 
     CPPUNIT_TEST_SUITE_END();
 };
