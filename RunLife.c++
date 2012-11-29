@@ -67,19 +67,19 @@ int main () {
         Print grid.
         */
         ifstream infile("RunLifeConway.in");
+        ofstream outfile;
+        outfile.open("RunLifeConway.out");
         //char * dir = getcwd(NULL, 0);
         //printf("Current dir: %s", dir);
         
         Life<ConwayCell> exe(infile);
-        ofstream myfile;
-        myfile.open("RunLifeConway.out");
-        exe.print(myfile);
+        exe.print(outfile);
         exe.run(283);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(40);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(2500);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -100,13 +100,15 @@ int main () {
         */
         
         ifstream infile("RunLifeFredkin.in");
+        ofstream outfile;
+        outfile.open("RunLifeFredkin.out");
         
         Life<FredkinCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(1);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(1);
-        exe.print(cout);
+        exe.print(outfile);
         
     }
     catch (const invalid_argument&) {
@@ -127,12 +129,14 @@ int main () {
         Print every grid.
         */
         ifstream infile("RunLife.in");
+        ofstream outfile;
+        outfile.open("RunLife.out");
         
         Life<Cell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         for (int i=0; i<5; ++i) {
             exe.run(1);
-            exe.print(cout);
+            exe.print(outfile);
         }
         }
     catch (const invalid_argument&) {
@@ -151,15 +155,17 @@ int main () {
         cout << "*** Life<Cell> 5x5 ***" << endl;
         
         ifstream infile("RunLifeCell5x5.in");
+        ofstream outfile;
+        outfile.open("RunLifeCell5x5.out");
         
-        Life<FredkinCell> exe(infile);
-        exe.print(cout);
+        Life<Cell> exe(infile);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -174,15 +180,17 @@ int main () {
         cout << "*** Life<Cell> 10x10 ***" << endl;
 
         ifstream infile("RunLifeCell10x10.in");
+        ofstream outfile;
+        outfile.open("RunLifeCell10x10.out");
         
-        Life<FredkinCell> exe(infile);
-        exe.print(cout);
+        Life<Cell> exe(infile);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -197,15 +205,17 @@ int main () {
         cout << "*** Life<Cell> 20x20 ***" << endl;
 
         ifstream infile("RunLifeCell20x20.in");
+        ofstream outfile;
+        outfile.open("RunLifeCell20x20.out");
         
-        Life<FredkinCell> exe(infile);
-        exe.print(cout);
+        Life<Cell> exe(infile);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -220,15 +230,17 @@ int main () {
         cout << "*** Life<Cell> 50x50 ***" << endl;
 
         ifstream infile("RunLifeCell50x50.in");
+        ofstream outfile;
+        outfile.open("RunLifeCell50x50.out");
         
         Life<Cell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(1);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(5);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -243,15 +255,17 @@ int main () {
         cout << "*** Life<ConwayCell> 5x5 ***" << endl;
         
         ifstream infile("RunLifeConway5x5.in");
+        ofstream outfile;
+        outfile.open("RunLifeConway5x5.out");
         
         Life<ConwayCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -266,15 +280,17 @@ int main () {
         cout << "*** Life<ConwayCell> 10x10 ***" << endl;
         
         ifstream infile("RunLifeConway10x10.in");
+        ofstream outfile;
+        outfile.open("RunLifeConway10x10.out");
         
         Life<ConwayCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -289,15 +305,17 @@ int main () {
         cout << "*** Life<ConwayCell> 20x20 ***" << endl;
 
         ifstream infile("RunLifeConway20x20.in");
+        ofstream outfile;
+        outfile.open("RunLifeConway20x20.out");
         
         Life<ConwayCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -312,15 +330,17 @@ int main () {
         cout << "*** Life<ConwayCell> 50x50 ***" << endl;
 
         ifstream infile("RunLifeConway50x50.in");
+        ofstream outfile;
+        outfile.open("RunLifeConway50x50.out");
         
         Life<ConwayCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(1);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(5);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -335,15 +355,17 @@ int main () {
         cout << "*** Life<FredkinCell> 5x5 ***" << endl;
         
         ifstream infile("RunLifeFredkin5x5.in");
+        ofstream outfile;
+        outfile.open("RunLifeFredkin5x5.out");
         
         Life<FredkinCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -358,15 +380,17 @@ int main () {
         cout << "*** Life<FredkinCell> 10x10 ***" << endl;
         
         ifstream infile("RunLifeFredkin10x10.in");
+        ofstream outfile;
+        outfile.open("RunLifeFredkin10x10.out");
         
         Life<FredkinCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -381,15 +405,17 @@ int main () {
         cout << "*** Life<FredkinCell> 20x20 ***" << endl;
 
         ifstream infile("RunLifeFredkin20x20.in");
+        ofstream outfile;
+        outfile.open("RunLifeFredkin20x20.out");
         
         Life<FredkinCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(20);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(50);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
@@ -404,15 +430,17 @@ int main () {
         cout << "*** Life<FredkinCell> 50x50 ***" << endl;
 
         ifstream infile("RunLifeFredkin50x50.in");
+        ofstream outfile;
+        outfile.open("RunLifeFredkin50x50.out");
         
         Life<FredkinCell> exe(infile);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(1);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(5);
-        exe.print(cout);
+        exe.print(outfile);
         exe.run(10);
-        exe.print(cout);
+        exe.print(outfile);
     }
     catch (const invalid_argument&) {
         assert(false);}
