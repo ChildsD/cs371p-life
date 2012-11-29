@@ -23,6 +23,8 @@ GitHub ID: ChildsD
 GitHub Repository Name: cs371p-life
 
 Comments:
+1. TestLife.c++ needs file plain20x20.in to run correctly
+
 
 ----------------
 Pair Programming
