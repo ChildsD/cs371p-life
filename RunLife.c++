@@ -71,7 +71,9 @@ int main () {
         //printf("Current dir: %s", dir);
         
         Life<ConwayCell> exe(infile);
-        exe.print(cout);
+        ofstream myfile;
+        myfile.open("RunLifeConway.out");
+        exe.print(myfile);
         exe.run(283);
         exe.print(cout);
         exe.run(40);
@@ -219,7 +221,7 @@ int main () {
 
         ifstream infile("RunLifeCell50x50.in");
         
-        Life<FredkinCell> exe(infile);
+        Life<Cell> exe(infile);
         exe.print(cout);
         exe.run(1);
         exe.print(cout);
