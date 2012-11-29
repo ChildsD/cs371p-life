@@ -9,7 +9,7 @@ Last Name: Childs
 EID: DDC497
 E-mail: Childsd@cs.utexas.edu
 Estimated number of hours: 18
-Actual    number of hours:
+Actual    number of hours: 16
 
 Partner First Name:Ang
 Partner Last Name:Li
