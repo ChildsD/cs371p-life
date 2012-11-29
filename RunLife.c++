@@ -69,8 +69,6 @@ int main () {
         ifstream infile("RunLifeConway.in");
         ofstream outfile;
         outfile.open("RunLifeConway.out");
-        //char * dir = getcwd(NULL, 0);
-        //printf("Current dir: %s", dir);
         
         Life<ConwayCell> exe(infile);
         exe.print(outfile);
