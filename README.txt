@@ -9,7 +9,7 @@ Last Name: Childs
 EID: DDC497
 E-mail: Childsd@cs.utexas.edu
 Estimated number of hours: 18
-Actual    number of hours: 16
+Actual    number of hours:
 
 Partner First Name:Ang
 Partner Last Name:Li
@@ -18,8 +18,8 @@ Partner E-mail:ang.li@utexas.edu
 Partner Estimated number of hours:20
 Partner Actual    number of hours:
 
-Turnin CS Username: childsd
-GitHub ID: ChildsD
+Turnin CS Username: sora
+GitHub ID: xpconanfan
 GitHub Repository Name: cs371p-life
 
 Comments:
