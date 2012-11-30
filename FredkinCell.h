@@ -15,11 +15,19 @@ public:
     char status;
     size_t age;
     
+    /* 
+     * Default constructor
+     */
     FredkinCell() {
         age = 0;
         status = '-';
     }
     
+    /*
+     * Constructor
+     * @param stat
+     *      initial status
+     */
     FredkinCell(char stat) {
         status = stat;
         if (status>='0' && status <='9') {
@@ -33,6 +41,13 @@ public:
         }
     }
     
+    /*
+     * Constructor
+     * @param stat
+     *      initial status
+     * @param new_age
+     *      initial age
+     */
     FredkinCell(char stat, size_t new_age) {
         status = stat;
         age = new_age;
@@ -51,18 +66,33 @@ public:
         return d_vec[i][j];
     }
     
+    /*
+     * @return
+     *      number of neighbors need to check
+     */
     size_t get_num_neighbor() {
         return num_neighbor;
     }
     
+    /*
+     * @return
+     *      current status
+     */
     char get_status() {
         return status;
     }
     
-    //dummy constructor
+    /* Dummy constructor
+     */
     FredkinCell(ConwayCell* p) {}
     
-    
+    /*
+     * Returns a pointer to a new cell for next round
+     * @param neighbor
+     *      number of alive nighbors
+     * @return
+     *      pointer to the next round cell
+     */
     FredkinCell* update(size_t neighbor) {
         bool aging = false;
         if (status != '-') {
@@ -85,7 +115,9 @@ public:
             return new FredkinCell('-', age);
         }
     }
-    
+    /*
+     * Destructor
+     */
     ~FredkinCell() {}
 };
 const int FredkinCell::num_neighbor = 4;

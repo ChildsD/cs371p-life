@@ -64,9 +64,6 @@ public:
     }
     
     void run(size_t num_turns) {
-        if (T::is_cell) {
-        }
-        
         int next_r = 0;
         int next_c = 0;
         bool fred_mutate = false;
@@ -142,6 +139,9 @@ public:
         w << endl;
     }
     
+    /* 
+     * Destructor
+     */
     ~Life() {
         for (int r=0; (size_t) r<num_r; ++r) {
             for (int c=0; (size_t) c<num_c; ++c) {
@@ -156,4 +156,5 @@ public:
         delete cur_world;
         delete next_world;
     }
+    
 };
