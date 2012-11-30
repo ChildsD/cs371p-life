@@ -12,7 +12,7 @@
 #include "cppunit/TextTestRunner.h"				// TestRunner
 
 // OUR INCLUDES HERE
-
+#define private public
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
@@ -365,6 +365,280 @@ struct TestLife : CppUnit::TestFixture {
         }
 	}
 
+	// ---------------------
+	// test_get_num_neighbor
+	// ---------------------
+
+	void test_get_num_neighbor_0 ()
+	{
+		try{
+			ifstream infile("RunLife.in", ifstream::in);
+			Life<Cell> l(infile);
+			size_t n = (*((*(l.cur_world))[10][10])).get_num_neighbor();
+			CPPUNIT_ASSERT(n == 4);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_num_neighbor_1 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			size_t n = (*((*(l.cur_world))[49][34])).get_num_neighbor();
+			CPPUNIT_ASSERT(n == 8);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_num_neighbor_2 ()
+	{
+		try{
+			ifstream infile("RunLifeFredkin.in", ifstream::in);
+			Life<FredkinCell> l(infile);
+			size_t n = (*((*(l.cur_world))[9][9])).get_num_neighbor();
+			CPPUNIT_ASSERT(n == 4);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_num_neighbor_3 ()
+	{
+		try{
+			ifstream infile("RunLife.in", ifstream::in);
+			Life<Cell> l(infile);
+			size_t n = (*((*(l.cur_world))[0][0])).get_num_neighbor();
+			CPPUNIT_ASSERT(n == 4);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_num_neighbor_4 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			size_t n = (*((*(l.cur_world))[0][0])).get_num_neighbor();
+			CPPUNIT_ASSERT(n == 8);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_num_neighbor_5 ()
+	{
+		try{
+			ifstream infile("RunLifeFredkin.in", ifstream::in);
+			Life<FredkinCell> l(infile);
+			size_t n = (*((*(l.cur_world))[1][0])).get_num_neighbor();
+			CPPUNIT_ASSERT(n == 4);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_num_neighbor_6 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			size_t n = (*((*(l.cur_world))[0][1])).get_num_neighbor();
+			CPPUNIT_ASSERT(n == 8);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	// ------------
+	// test_get_vec
+	// ------------
+
+	void test_get_vec_0 ()
+	{
+		try{
+			ifstream infile("RunLife.in", ifstream::in);
+			Life<Cell> l(infile);
+			int n = (*((*(l.cur_world))[10][10])).get_vec(0, 1);
+			CPPUNIT_ASSERT(n == -1);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_vec_1 ()
+	{
+		try{
+			ifstream infile("RunLifeFredkin.in", ifstream::in);
+			Life<FredkinCell> l(infile);
+			int n = (*((*(l.cur_world))[10][10])).get_vec(3, 0);
+			CPPUNIT_ASSERT(n == 1);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_vec_2 ()
+	{
+		try{
+			ifstream infile("RunLifeFredkin.in", ifstream::in);
+			Life<FredkinCell> l(infile);
+			(*((*(l.cur_world))[10][10])).get_vec(4, 0);
+			CPPUNIT_ASSERT(false);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(true);
+        }
+	}
+
+	void test_get_vec_3 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			int n = (*((*(l.cur_world))[10][10])).get_vec(0, 1);
+			CPPUNIT_ASSERT(n == -1);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_vec_4 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			int n = (*((*(l.cur_world))[10][10])).get_vec(3, 0);
+			CPPUNIT_ASSERT(n == 1);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_vec_5 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			int n = (*((*(l.cur_world))[10][10])).get_vec(4, 1);
+			CPPUNIT_ASSERT(n == -1);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_get_vec_6 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			(*((*(l.cur_world))[10][10])).get_vec(8, 0);
+			CPPUNIT_ASSERT(false);
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(true);
+        }
+	}
+
+	// -----------
+	// test_update
+	// -----------
+
+	void test_update_0 ()
+	{
+		try{
+			ifstream infile("RunLife.in", ifstream::in);
+			Life<FredkinCell> l(infile);
+			FredkinCell c = (*((*(l.cur_world))[10][7]));
+			CPPUNIT_ASSERT(c.status == '-');
+			c = *(c.update(1));
+			CPPUNIT_ASSERT(c.status == '0');
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+
+	void test_update_1 ()
+	{
+		try{
+			ifstream infile("RunLife.in", ifstream::in);
+			Life<FredkinCell> l(infile);
+			FredkinCell c = (*((*(l.cur_world))[10][10]));
+			CPPUNIT_ASSERT(c.status == '0');
+			c = *(c.update(2));
+			CPPUNIT_ASSERT(c.status == '-');
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+
+	void test_update_2 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			ConwayCell c = (*((*(l.cur_world))[34][34]));
+			CPPUNIT_ASSERT(c.status == '*');
+			c = *(c.update(1));
+			CPPUNIT_ASSERT(c.status == '.');
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
+	void test_update_3 ()
+	{
+		try{
+			ifstream infile("RunLifeConway.in", ifstream::in);
+			Life<ConwayCell> l(infile);
+			ConwayCell c = (*((*(l.cur_world))[0][0]));
+			CPPUNIT_ASSERT(c.status == '.');
+			c = *(c.update(3));
+			CPPUNIT_ASSERT(c.status == '*');
+		}
+
+		catch (const std::exception &e) {
+    		CPPUNIT_ASSERT(false);
+        }
+	}
+
 	CPPUNIT_TEST_SUITE(TestLife);
 
     CPPUNIT_TEST(test_life_constructor_0);
@@ -391,15 +665,24 @@ struct TestLife : CppUnit::TestFixture {
     CPPUNIT_TEST(test_run_1);
     CPPUNIT_TEST(test_run_2);
     CPPUNIT_TEST(test_run_3);
-    // CPPUNIT_TEST(test_get_num_neighbor_0);
-    // CPPUNIT_TEST(test_get_num_neighbor_1);
-    // CPPUNIT_TEST(test_get_num_neighbor_2);
-    // CPPUNIT_TEST(test_get_vec_0);
-    // CPPUNIT_TEST(test_get_vec_1);
-    // CPPUNIT_TEST(test_get_vec_2);
-    // CPPUNIT_TEST(test_update_0);
-    // CPPUNIT_TEST(test_update_1);
-    // CPPUNIT_TEST(test_update_2);
+    CPPUNIT_TEST(test_get_num_neighbor_0);
+    CPPUNIT_TEST(test_get_num_neighbor_1);
+    CPPUNIT_TEST(test_get_num_neighbor_2);
+    CPPUNIT_TEST(test_get_num_neighbor_3);
+    CPPUNIT_TEST(test_get_num_neighbor_4);
+    CPPUNIT_TEST(test_get_num_neighbor_5);
+    CPPUNIT_TEST(test_get_num_neighbor_6);
+    CPPUNIT_TEST(test_get_vec_0);
+    CPPUNIT_TEST(test_get_vec_1);
+    CPPUNIT_TEST(test_get_vec_2);
+    CPPUNIT_TEST(test_get_vec_3);
+    CPPUNIT_TEST(test_get_vec_4);
+    CPPUNIT_TEST(test_get_vec_5);
+    CPPUNIT_TEST(test_get_vec_6);
+    CPPUNIT_TEST(test_update_0);
+    CPPUNIT_TEST(test_update_1);
+    CPPUNIT_TEST(test_update_2);
+    CPPUNIT_TEST(test_update_3);
 
     CPPUNIT_TEST_SUITE_END();
 };
