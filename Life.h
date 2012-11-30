@@ -10,6 +10,8 @@ using namespace std;
 
 template<typename T>
 class Life {
+
+private:
     typedef vector< vector<T*> > World;
     typedef World* p_World;
     
